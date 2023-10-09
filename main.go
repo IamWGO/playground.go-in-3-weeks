@@ -1,20 +1,23 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
+	dividend, divisor := 10, 5
+	fmt.Printf("%v divided by %v is %v\n", dividend, divisor, divide(dividend, divisor))
 
-	fmt.Println("main 1")
-	defer fmt.Println("defer 1")
-	fmt.Println("main 2")
-	defer fmt.Println("defer 2")
+	fmt.Println(" -- --- -- ")
 
-	// db, _ := sql.Open("driverName", "connection string")
-	// defer db.Close()
+	dividend, divisor = 10, 0
+	fmt.Printf("%v divided by %v is %v\n", dividend, divisor, divide(dividend, divisor))
+	// Panic will print because 10/0 is not accepted
+}
 
-	// rows, _ := db.Query("some sql query here")
-	// defer rows.Close()
-
+func divide(dividend, divisor int) int {
+	defer func() {
+		if recover() != nil {
+			fmt.Println("Panic detected!")
+		}
+	}()
+	return dividend / divisor
 }
