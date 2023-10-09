@@ -1,18 +1,18 @@
 package main
 
 import (
-	"bufio"
-	"fmt"
+	"io"
+	"net/http"
 	"os"
-	"strings"
 )
 
 func main() {
-	fmt.Println("What do you want to say : ")
-	in := bufio.NewReader(os.Stdin) // define input 
-	s, _ := in.ReadString('\n') // input string and catch error
-	s = strings.TrimSpace(s) //trim
-	s = strings.ToUpper(s) // set uppercase
-	
-	fmt.Println(s + "!")
+	http.HandleFunc("/", Handler)
+	http.ListenAndServe(":3001", nil) //ip address and port
+}
+
+func Handler(w http.ResponseWriter, r *http.Request) {
+	f, _ := os.Open("menu.txt") // get content from file and ignore error
+	io.Copy(w, f) // take content and copy to ResponseWriter
+
 }
