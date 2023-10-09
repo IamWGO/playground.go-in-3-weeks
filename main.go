@@ -14,4 +14,18 @@ func main() {
 	fmt.Println(arr)
 
 	fmt.Println(len(arr));
+
+	fmt.Println("---- String array ----");
+	arrString := [3]string{"Lee", "Mali", "Singto"}
+
+	arrString2 := arrString
+	fmt.Println(arrString2)
+
+	arrString[0] = "King"
+	fmt.Println(arrString)
+	fmt.Println(arrString2)
+	
+	fmt.Println(arrString == arrString2)
+	
+
 }
