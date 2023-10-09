@@ -1,18 +1,17 @@
 package main
 
 import (
-	"io"
-	"net/http"
-	"os"
+	"fmt"
 )
 
 func main() {
-	http.HandleFunc("/", Handler)
-	http.ListenAndServe(":3001", nil) //ip address and port
-}
+	var arr [3]int
+	fmt.Println(arr)
+	arr = [3]int{1,2,3}
 
-func Handler(w http.ResponseWriter, r *http.Request) {
-	f, _ := os.Open("menu.txt") // get content from file and ignore error
-	io.Copy(w, f) // take content and copy to ResponseWriter
+	fmt.Println(arr[1])
+	arr[1] = 99
+	fmt.Println(arr)
 
+	fmt.Println(len(arr));
 }
