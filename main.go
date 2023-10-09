@@ -2,30 +2,21 @@ package main
 
 import (
 	"fmt"
+	"slices" 
 )
 
 func main() {
-	var arr [3]int
-	fmt.Println(arr)
-	arr = [3]int{1,2,3}
-
-	fmt.Println(arr[1])
-	arr[1] = 99
-	fmt.Println(arr)
-
-	fmt.Println(len(arr));
-
-	fmt.Println("---- String array ----");
-	arrString := [3]string{"Lee", "Mali", "Singto"}
-
-	arrString2 := arrString
-	fmt.Println(arrString2)
-
-	arrString[0] = "King"
-	fmt.Println(arrString)
-	fmt.Println(arrString2)
+	var s []int  //Slices of ints
+	fmt.Println(s) // [] nil
 	
-	fmt.Println(arrString == arrString2)
-	
+	s = []int{1,2,3}
+	s[1] = 99
+	fmt.Println(s)
+
+	s = append(s, 4,5,6,7)
+	fmt.Println(s)
+
+	s = slices.Delete(s, 2,4) // remove index
+	fmt.Println(s)
 
 }
