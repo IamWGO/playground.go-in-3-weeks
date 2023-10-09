@@ -1,33 +1,28 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"strings"
 )
 
 func main() {
-	 var m map[string][]string
-	 fmt.Println(m)
+	fmt.Println("Please select an option")
+	fmt.Println("1) Print menu")
+	in := bufio.NewReader(os.Stdin)
+	choice, _ := in.ReadString('\n')
+	choice = strings.TrimSpace(choice) // we don't know what to do with this yet!
 
-	 m = map[string][]string {
-		"coffee": {"Coffee", "Espresso", "Cappuccino"},
-		"tea": {"Hot Tea","Chai Tea"},
-	 }
+	type menuItem struct {
+		name   string
+		prices map[string]float64
+	}
 
-	 fmt.Println(m["coffee"])
-	 fmt.Println(m["tea"])
+	menu := []menuItem{
+		{name: "Coffee", prices: map[string]float64{"small": 1.65, "medium": 1.80, "large": 1.95}},
+		{name: "Espresso", prices: map[string]float64{"single": 1.90, "double": 2.25, "triple": 2.55}},
+	}
 
-	 m["other"] = []string{"Hot Chocolate"}
-	 fmt.Println(m) //map[coffee:[Coffee Espresso Cappuccino] other:[Hot Chocolate] tea:[Hot Tea Chai Tea]]
-
-	 delete(m, "tea")
-	 v, ok := m["tea"];
-	 fmt.Println(v, ok)  //[] false
-
-	 m2 := m  // pointer
-	 m2["coffee"] = []string{"Coffee"}
-	 m["tea"] = []string{"Hot Tea"}
-
-	 fmt.Println(m) //map[coffee:[Coffee] other:[Hot Chocolate] tea:[Hot Tea]]
-	 fmt.Println(m2) //map[coffee:[Coffee] other:[Hot Chocolate] tea:[Hot Tea]]
-
+	fmt.Println(menu)
 }
