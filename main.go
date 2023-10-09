@@ -2,21 +2,32 @@ package main
 
 import (
 	"fmt"
-	"slices" 
 )
 
 func main() {
-	var s []int  //Slices of ints
-	fmt.Println(s) // [] nil
-	
-	s = []int{1,2,3}
-	s[1] = 99
-	fmt.Println(s)
+	 var m map[string][]string
+	 fmt.Println(m)
 
-	s = append(s, 4,5,6,7)
-	fmt.Println(s)
+	 m = map[string][]string {
+		"coffee": {"Coffee", "Espresso", "Cappuccino"},
+		"tea": {"Hot Tea","Chai Tea"},
+	 }
 
-	s = slices.Delete(s, 2,4) // remove index
-	fmt.Println(s)
+	 fmt.Println(m["coffee"])
+	 fmt.Println(m["tea"])
+
+	 m["other"] = []string{"Hot Chocolate"}
+	 fmt.Println(m) //map[coffee:[Coffee Espresso Cappuccino] other:[Hot Chocolate] tea:[Hot Tea Chai Tea]]
+
+	 delete(m, "tea")
+	 v, ok := m["tea"];
+	 fmt.Println(v, ok)  //[] false
+
+	 m2 := m  // pointer
+	 m2["coffee"] = []string{"Coffee"}
+	 m["tea"] = []string{"Hot Tea"}
+
+	 fmt.Println(m) //map[coffee:[Coffee] other:[Hot Chocolate] tea:[Hot Tea]]
+	 fmt.Println(m2) //map[coffee:[Coffee] other:[Hot Chocolate] tea:[Hot Tea]]
 
 }
