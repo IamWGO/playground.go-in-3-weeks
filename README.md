@@ -1,4 +1,4 @@
-# Övningsuppgifter Python
+# Övningsuppgifter Python + GO
 
 ## Funktionssyntax
 En funktion i Python definieras enligt följande:
