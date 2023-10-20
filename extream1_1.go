@@ -78,5 +78,5 @@ func main() {
 	inputString := getInputString("Input some letters (ex: pwwkew)? ")
 	longUnqueSubstring(inputString)
 
-	fmt.Printf("-- End program Easy1.1 --")
+	fmt.Printf("-- End program Extream1.1 --")
 }
