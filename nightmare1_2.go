@@ -74,12 +74,59 @@ func longestValidParentheses(inputString string) {
 	 
 }
 
+
+func getLongestParentheses(inputString string) string {
+	parenthesesSet := []string{}
+	openParentheses := []rune{}
+	stringSet := ""
+
+	for _, char := range inputString {
+		if char == '(' {
+			openParentheses = append(openParentheses, char)
+			stringSet += string(char)
+		} else {
+			if len(openParentheses) > 0 {
+				openParentheses = openParentheses[:len(openParentheses)-1]
+				stringSet += string(char)
+			} else {
+				if len(stringSet) > 0 {
+					parenthesesSet = append(parenthesesSet, stringSet)
+					stringSet = ""
+				}
+			}
+		}
+
+		if len(openParentheses) == 0 && len(stringSet) > 0 {
+			parenthesesSet = append(parenthesesSet, stringSet)
+			stringSet = ""
+		}
+	}
+
+	// After the loop, check if there are open parentheses left in the list
+	// Substring and get parentheses set
+	if len(openParentheses) > 0 {
+		parenthesesSet = append(parenthesesSet, stringSet[len(stringSet)-len(openParentheses):])
+	}
+
+	// Find the longest parentheses
+	longestParentheses := ""
+	for _, parentheses := range parenthesesSet {
+		if len(longestParentheses) < len(parentheses) {
+			longestParentheses = parentheses
+		}
+	}
+
+	return longestParentheses
+}
+
+
 func main() {
 
 	inputString := inputString("In put the characters only '(' or ')' : ")
 
 	if (isCorrectFormat(inputString)) {
-		longestValidParentheses(inputString)
+		longestParentheses := getLongestParentheses(inputString)
+		fmt.Printf("Longest valid parentheses: %s\n", longestParentheses)
 	} else {
 		fmt.Println("The string should contain only '(' and ')'")
 	}

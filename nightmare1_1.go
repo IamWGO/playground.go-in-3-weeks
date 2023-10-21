@@ -56,11 +56,11 @@ func getMedianOfSortedArrays(combined []int) float64 {
 
 func main() {
 
-	maxSet1 := getInputNumber("\nAmount of number list : ")
+	maxSet1 := getInputNumber("\nAmount of number list set 1 : ")
 	numbers1 := []int{}
 	numbers1 = inputNumbers(numbers1, maxSet1)
 
-	maxSet2 := getInputNumber("\nAmount of number list : ")
+	maxSet2 := getInputNumber("\nAmount of number list set 2 : ")
 	numbers2 := []int{}
 	numbers2 = inputNumbers(numbers2, maxSet2)
 	
